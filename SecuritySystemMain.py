@@ -94,6 +94,7 @@ if(activated == True):
             payload = {'value1': image['link']}
             #contacts the IFTT webhook, causing security alert to be sent to phone and
             # triggering an event on the particle argon
+            # Don't forget to add in the webhook key, it will be included in my assignment submission.
             requests.post('https://maker.ifttt.com/trigger/motion_detected/with/key/*insert webhook key*', data = payload)
             requests.post('https://maker.ifttt.com/trigger/motion_detected_contact_argon/with/key/*insert webhook key*')
             print('IFTTT sent')
