@@ -3,10 +3,13 @@ environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 import pygame
 import time
 
+#Function to create pygame window, as this needs to be open so we can register keyboard inputs. Pygame was used for this as the python keyboard module can't be 
+# imported on the raspberry pi for some reason.
 def init():
     pygame.init()
     win = pygame.display.set_mode((50, 50))
     
+#Function to get whichever key is being pressed
 def getKey(keyName):
     ans = False
     for eve in pygame.event.get():pass
@@ -16,7 +19,8 @@ def getKey(keyName):
         ans = True
     pygame.display.update()
     return ans
-    
+
+#Function to return the correct number (in string form) when a number on the numPad is pressed.
 def numpad_Detection():
     if getKey('KP0'):
         print('key 0 was pressed')
