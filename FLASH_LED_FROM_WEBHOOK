@@ -1,0 +1,31 @@
+int MY_LED = D3;
+SYSTEM_THREAD(ENABLED);
+
+// setup() is run only once, it's where we set up GPIO and initialise peripherals
+void setup() {
+    
+  pinMode(MY_LED, OUTPUT);
+  
+  
+  // Subscribe to an event published by IFTTT using Particle.subscribe
+  Particle.subscribe("intruder_detected_flash_led_696978", myHandler);
+
+}
+
+// In this program we only want to repsond to events, so loop can be empty.
+void loop() {
+    
+}
+
+
+void myHandler(const char *event, const char *data)
+{
+  for(int i = 0; i <= 60; i++)
+  {
+    digitalWrite(MY_LED,HIGH);
+    delay(500);
+    digitalWrite(MY_LED,LOW);
+    delay(500);
+  }
+}
+
