@@ -75,7 +75,7 @@ if(activated == True):
     #to stop the system tiggering on the user when leaving their room after activating the
     #system, it may be commented out as when demonstrating how the system works I don't want'
     # to have to wait for it to activate
-    #time.sleep(180)
+    time.sleep(180)
     
     while (input_passcode != passcode):
         key_press = key.numpad_Detection()
