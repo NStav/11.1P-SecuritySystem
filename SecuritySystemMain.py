@@ -42,10 +42,13 @@ def SetPasscode():
     SubmitButton.grid(row=6, column=1)
 
 def Activate():
-    print('activate')
-    global activated
-    activated = True
-    win.destroy()
+    if(passcode.isnumeric() == False or passcode == ""):
+        print('Cannot activate as the passcode you set is either empty or not numeric')
+    else:
+        print('activate')
+        global activated
+        activated = True
+        win.destroy()
     
 def close():
     win.destroy()
@@ -60,6 +63,7 @@ def Main_Menu():
     
     win.protocol("WM_DELETE_WINDOW", close)
     win.mainloop()
+
 
 Main_Menu()
 if(activated == True):
@@ -94,7 +98,7 @@ if(activated == True):
             payload = {'value1': image['link']}
             #contacts the IFTT webhook, causing security alert to be sent to phone and
             # triggering an event on the particle argon
-            # Don't forget to add in the webhook key, it will be included in my assignment submission.
+	    # dont forget to add webhhok key from 11.2P submission
             requests.post('https://maker.ifttt.com/trigger/motion_detected/with/key/*insert webhook key*', data = payload)
             requests.post('https://maker.ifttt.com/trigger/motion_detected_contact_argon/with/key/*insert webhook key*')
             print('IFTTT sent')
